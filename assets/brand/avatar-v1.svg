@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" role="img" aria-labelledby="title description">
+  <title id="title">打卡了吗 · 小程序头像</title>
+  <desc id="description">蓝色背景，白色清单轮廓与向右上方伸展的完成对勾。图形居中，适配圆形裁切。</desc>
+
+  <g id="background">
+    <path fill="#0062CC" d="M0 0h1024v1024H0z"/>
+  </g>
+
+  <g id="checklist" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="282" y="242" width="442" height="548" rx="76" stroke-width="44"/>
+    <path id="list-lines" d="M438 378h172M438 474h124" stroke-width="32"/>
+  </g>
+
+  <g id="list-dots" fill="#FFFFFF">
+    <circle cx="376" cy="378" r="16"/>
+    <circle cx="376" cy="474" r="16"/>
+  </g>
+
+  <g id="completion-mark" stroke-linecap="round" stroke-linejoin="round">
+    <path id="check-clearance" d="m410 624 92 88 252-264" stroke="#0062CC" stroke-width="108"/>
+    <path id="check" d="m410 624 92 88 252-264" stroke="#FFFFFF" stroke-width="64"/>
+  </g>
+</svg>

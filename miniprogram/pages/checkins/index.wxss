@@ -1,0 +1,23 @@
+.view-tabs {
+  display: flex;
+  margin-bottom: 32rpx;
+  padding: 8rpx;
+  border-radius: 28rpx;
+  background: #e9e9ef;
+}
+
+.view-tab {
+  flex: 1;
+  min-height: 44px;
+  padding: 20rpx;
+  border-radius: 22rpx;
+  background: transparent;
+  color: var(--color-secondary);
+  line-height: 1.5;
+}
+
+.selected {
+  background: #ffffff;
+  color: var(--color-text);
+  font-weight: 600;
+}

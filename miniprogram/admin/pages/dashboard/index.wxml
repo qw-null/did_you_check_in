@@ -1,0 +1,8 @@
+<view class="page">
+  <view wx:if="{{verifying}}" class="card">正在核验管理员身份…</view>
+  <block wx:elif="{{authorized}}">
+    <page-header title="运营工作台" description="已通过本次服务端身份核验。" />
+    <empty-state title="内容管理模块准备中" description="活动录入、核验发布、投稿审核和问题处理将分阶段接入。这里不展示模拟统计或未授权数据。" />
+  </block>
+  <view wx:else class="card">当前无法进入运营工作台。</view>
+</view>

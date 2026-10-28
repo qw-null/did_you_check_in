@@ -1,0 +1,27 @@
+.brand-block {
+  padding: 36rpx 0 16rpx;
+  text-align: center;
+}
+
+.brand {
+  width: 196rpx;
+  height: 196rpx;
+  border-radius: 48rpx;
+}
+
+.brand-name {
+  margin: 24rpx 0 8rpx;
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.description {
+  line-height: 1.9;
+}
+
+.version-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 56px;
+}

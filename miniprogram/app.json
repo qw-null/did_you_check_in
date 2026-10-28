@@ -1,0 +1,55 @@
+{
+  "pages": [
+    "pages/square/index",
+    "pages/checkins/index",
+    "pages/profile/index",
+    "pages/about/index"
+  ],
+  "subPackages": [
+    {
+      "root": "admin",
+      "name": "admin",
+      "pages": ["pages/dashboard/index"]
+    }
+  ],
+  "window": {
+    "navigationBarTitleText": "打卡了吗",
+    "navigationBarBackgroundColor": "#F5F5F7",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#F5F5F7",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#626268",
+    "selectedColor": "#0062CC",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/square/index",
+        "text": "活动广场",
+        "iconPath": "assets/tabbar/square.png",
+        "selectedIconPath": "assets/tabbar/square-selected.png"
+      },
+      {
+        "pagePath": "pages/checkins/index",
+        "text": "我的打卡",
+        "iconPath": "assets/tabbar/checkins.png",
+        "selectedIconPath": "assets/tabbar/checkins-selected.png"
+      },
+      {
+        "pagePath": "pages/profile/index",
+        "text": "我的",
+        "iconPath": "assets/tabbar/profile.png",
+        "selectedIconPath": "assets/tabbar/profile-selected.png"
+      }
+    ]
+  },
+  "usingComponents": {
+    "page-header": "/components/page-header/index",
+    "empty-state": "/components/empty-state/index"
+  },
+  "style": "v2",
+  "lazyCodeLoading": "requiredComponents",
+  "sitemapLocation": "sitemap.json"
+}

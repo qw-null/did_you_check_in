@@ -1,0 +1,16 @@
+<view class="page">
+  <page-header title="活动广场" description="把喜欢的福利，收进每天的清单。" />
+
+  <view class="intro card">
+    <image class="brand" src="/assets/brand/avatar.png" mode="aspectFit" aria-label="打卡了吗头像" />
+    <view class="intro-copy">
+      <view class="intro-title">一起发现，一起打卡</view>
+      <view class="muted">积分、礼品与优惠权益</view>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-title">发现活动</view>
+    <empty-state title="活动列表准备中" description="本阶段已搭建页面骨架，活动查询将在云端接口接入后开放。" action-text="看看我的打卡" bind:action="onOpenCheckins" />
+  </view>
+</view>

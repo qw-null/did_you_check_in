@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" role="img" aria-labelledby="title description">
+  <title id="title">打卡了吗 · 一起打卡吗？</title>
+  <desc id="description">暖黄色背景，两只围着蓝色与薄荷绿领巾的小羊共同抱着橙色优惠券。优惠券分两行写着“一起”“打卡吗？”，并带有百分号，上方是绿色完成对勾。</desc>
+  <defs>
+    <g id="sheep-head" stroke="#273445" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M-101 157c0-63 44-93 101-93s101 30 101 93v65h-202z" fill="#FFFEF9" stroke-width="12"/>
+      <path d="M-128 20c-30-15-29-56 1-68-16-32 12-64 45-56 8-39 51-50 75-21 27-26 73-13 80 19 37-10 66 20 54 51 32 12 38 51 11 71 16 33-10 64-42 58-17 33-54 38-77 16-27 22-62 13-76-10-37 15-69-4-65-32-17-3-24-19-6-28z" fill="#FFFEF9" stroke-width="12"/>
+      <circle cx="-110" cy="-71" r="29" fill="#F7C878" stroke-width="10"/>
+      <path d="M-118-57c-28-18-9-48 11-36s6 39-8 24c-5-6 0-13 7-11" stroke-width="7"/>
+      <circle cx="110" cy="-71" r="29" fill="#F7C878" stroke-width="10"/>
+      <path d="M118-57c28-18 9-48-11-36s-6 39 8 24c5-6 0-13-7-11" stroke-width="7"/>
+      <path d="M-77 8c-23-35-65-38-64-9 1 30 38 42 63 23" fill="#FFD9B2" stroke-width="10"/>
+      <path d="M77 8c23-35 65-38 64-9-1 30-38 42-63 23" fill="#FFD9B2" stroke-width="10"/>
+      <ellipse cy="27" rx="81" ry="99" fill="#FFE3C1" stroke-width="12"/>
+      <path d="M-80-24c-12-28 3-55 30-52 9-26 36-34 56-13 24-19 56-6 58 19 29-1 43 28 23 51-15 12-35 3-43-12-14 19-37 17-51 2-18 17-40 12-48-6-7 13-17 18-25 11z" fill="#FFFEF9" stroke-width="10"/>
+      <ellipse cx="-48" cy="54" rx="16" ry="10" fill="#FFAB9F" stroke="none"/>
+      <ellipse cx="48" cy="54" rx="16" ry="10" fill="#FFAB9F" stroke="none"/>
+      <circle cx="-30" cy="23" r="9" fill="#273445" stroke="none"/>
+      <circle cx="30" cy="23" r="9" fill="#273445" stroke="none"/>
+      <path d="m-6 51 6 5 6-5" stroke-width="8"/>
+      <path d="M-19 73q19 22 38 0" stroke-width="9"/>
+    </g>
+  </defs>
+
+  <g id="background">
+    <path fill="#FFE5A0" d="M0 0h1024v1024H0z"/>
+    <circle cx="512" cy="508" r="412" fill="#FFF5D5"/>
+  </g>
+
+  <g id="celebration" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m213 244 9 22 23 9-23 9-9 23-9-23-23-9 23-9z" fill="#FFB629"/>
+    <path d="m806 289 8 18 19 8-19 8-8 19-8-19-19-8 19-8z" fill="#FF8B67"/>
+    <path d="m175 545 10 16m672-54-13 13" stroke="#3B98E7" stroke-width="13"/>
+    <circle cx="210" cy="780" r="9" fill="#37BFA0"/>
+    <circle cx="840" cy="757" r="9" fill="#FFAD28"/>
+    <path d="m471 142-9-17m94 17 9-17" stroke="#F4B549" stroke-width="11"/>
+  </g>
+
+  <g id="artwork">
+    <g id="blue-sheep" transform="translate(355 441) rotate(-9) scale(1.04)">
+      <use href="#sheep-head"/>
+      <path d="M-78 113q78 37 156 0l-12 43q-66 26-132 0z" fill="#248AE5" stroke="#273445" stroke-width="11" stroke-linejoin="round"/>
+      <path d="m-24 155-21 41 43-7 13-32" fill="#248AE5" stroke="#273445" stroke-width="10" stroke-linejoin="round"/>
+    </g>
+    <g id="mint-sheep" transform="translate(660 422) rotate(9) scale(1.04)">
+      <use href="#sheep-head"/>
+      <path d="M-78 113q78 37 156 0l-12 43q-66 26-132 0z" fill="#50CFA6" stroke="#273445" stroke-width="11" stroke-linejoin="round"/>
+      <path d="m24 155 21 41-43-7-13-32" fill="#50CFA6" stroke="#273445" stroke-width="10" stroke-linejoin="round"/>
+    </g>
+
+    <g id="shared-check" stroke="#273445" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="512" cy="226" r="65" fill="#50CFA6" stroke-width="11"/>
+      <path d="m484 226 20 21 37-42" stroke="#FFFFFF" stroke-width="22"/>
+    </g>
+
+    <g id="coupon" transform="rotate(-4 512 714)">
+      <path d="M230 614h564q40 0 40 40v32c-33 0-33 48 0 48v64q0 40-44 40H230q-40 0-40-44v-60c33 0 33-48 0-48v-32q0-40 40-40z" fill="#E8C582"/>
+      <path d="M230 600h564q40 0 40 40v32c-33 0-33 48 0 48v64q0 44-44 44H230q-40 0-40-44v-64c33 0 33-48 0-48v-32q0-40 40-40z" fill="#FF7047" stroke="#273445" stroke-width="12" stroke-linejoin="round"/>
+      <path d="M606 630v168" stroke="#FFD2B5" stroke-width="10" stroke-linecap="round" stroke-dasharray="10 19"/>
+      <g id="avatar-lettering" fill="#FFFFFF" aria-label="一起打卡吗？">
+        <path data-character="一" transform="translate(322.0000 681) scale(0.07600000 -0.07600000)" d="M45 419V315H954V419H45Z"/>
+        <path data-character="起" transform="translate(398.0000 681) scale(0.07600000 -0.07600000)" d="M946 275 847 308C844 259 840 225 834 207C828 189 815 179 793 179H677C655 180 644 190 644 210V411H903V765H529V668H801V510H540V168C540 108 570 78 630 78H810C862 78 895 91 910 115C926 140 938 193 946 275ZM105 341C99 203 74 78 30 -35L111 -106C131 -57 147 -5 161 49C194 5 232 -26 274 -46C333 -72 480 -86 715 -86H947L965 14C905 10 814 8 692 7C534 7 424 14 362 26V184H492V278H362V390H497V486H341V604H484V698H341V826H237V698H83V604H237V486H66V390H261V71C233 92 207 121 183 159C191 214 196 271 198 330L105 341Z"/>
+        <path data-character="打" transform="translate(230.0000 786) scale(0.08400000 -0.08400000)" d="M426 437C384 417 341 398 299 381V548H418V649H299V817H193V649H47V548H193V344C139 328 85 314 31 303L57 203C103 216 148 230 193 244V34C193 12 181 0 158 0C130 0 99 2 67 6L91 -95H194C264 -95 299 -61 299 7V281C342 297 384 315 426 333V437ZM439 755V653H694V41C694 15 683 2 663 2C614 2 562 4 508 8L531 -93H700C766 -93 800 -57 800 14V653H951V755H439Z"/>
+        <path data-character="卡" transform="translate(314.0000 786) scale(0.08400000 -0.08400000)" d="M398 819V489H51V387H398V-104H504V201C582 164 679 111 794 41L854 130C735 196 618 254 504 304V387H948V489H504V609H819V709H504V819H398Z"/>
+        <path data-character="吗" transform="translate(398.0000 786) scale(0.08400000 -0.08400000)" d="M362 748H68V-9H166V57H265V12H362V748ZM166 155V652H265V155H166ZM492 637 433 296H835C835 160 826 78 810 50C794 22 745 8 663 8C645 8 615 12 571 19L604 -90C633 -93 661 -95 689 -95C791 -95 858 -75 890 -37C921 1 937 145 937 395H829L888 789H418V689H770L724 395H546L594 632L492 637ZM386 203V105H781V203H386Z"/>
+        <path data-character="？" transform="translate(482.0000 786) scale(0.08400000 -0.08400000)" d="M261 728C187 728 129 707 86 665C42 623 21 565 21 491H135C135 533 143 566 160 589C179 617 210 630 254 630C288 630 315 621 334 602C352 583 362 557 362 524C362 499 353 475 335 453L323 439C258 381 219 339 206 312C192 285 186 252 186 214V200H301V214C301 238 306 259 316 279C325 297 338 314 356 329C404 371 433 398 442 408C466 440 479 481 479 531C479 592 459 640 419 675C379 711 326 728 261 728ZM243 151C221 151 203 144 188 130C173 116 166 98 166 76C166 54 173 36 188 22C203 8 221 0 243 0C265 0 283 7 298 21C313 35 321 54 321 76C321 98 313 116 299 130C284 144 265 151 243 151Z"/>
+      </g>
+      <g id="discount-percent" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round">
+        <circle cx="674" cy="665" r="20"/>
+        <circle cx="750" cy="762" r="20"/>
+        <path d="m666 782 92-138"/>
+      </g>
+    </g>
+
+    <g id="shared-paws" fill="#FFE3C1" stroke="#273445" stroke-width="10">
+      <ellipse cx="260" cy="625" rx="25" ry="37" transform="rotate(-19 260 625)"/>
+      <ellipse cx="764" cy="590" rx="25" ry="37" transform="rotate(15 764 590)"/>
+    </g>
+  </g>
+</svg>

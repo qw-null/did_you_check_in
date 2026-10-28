@@ -1,0 +1,38 @@
+<view class="page">
+  <page-header title="我的" description="把每次参与，都好好记下来。" />
+
+  <view class="welcome card">
+    <image class="avatar" src="/assets/brand/avatar.png" mode="aspectFit" aria-label="打卡了吗默认头像" />
+    <view class="welcome-copy">
+      <view class="welcome-title">{{userId ? '微信用户' : '欢迎来到打卡了吗'}}</view>
+      <view class="muted">{{identityLoading ? '正在核实身份…' : (userId ? '已建立微信身份' : '当前以游客身份浏览')}}</view>
+    </view>
+  </view>
+
+  <view wx:if="{{!userId}}" class="section">
+    <button class="primary-button" loading="{{identityLoading}}" disabled="{{identityLoading}}" bindtap="onLogin">建立微信身份</button>
+  </view>
+  <view wx:else class="card section">
+    <view class="section-title">内部用户 ID</view>
+    <view class="user-id">{{userId}}</view>
+    <button class="copy-button" bindtap="onCopyUserId">复制用户 ID</button>
+    <view class="muted">仅在配置管理员或联系项目支持时使用。</view>
+  </view>
+  <view wx:if="{{identityError}}" class="identity-error">{{identityError}}</view>
+
+  <view class="card section">
+    <view class="section-title">你的清单与记录</view>
+    <view class="muted">个人清单、完成记录、投稿和反馈仍在开发中。建立身份不会生成活动或打卡数据。</view>
+  </view>
+
+  <view class="menu section">
+    <button class="menu-row" bindtap="onOpenAbout" hover-class="button-pressed">
+      <text>关于打卡了吗</text>
+      <text class="chevron">›</text>
+    </button>
+    <button class="menu-row" open-type="feedback" hover-class="button-pressed">
+      <text>意见反馈</text>
+      <text class="chevron">›</text>
+    </button>
+  </view>
+</view>

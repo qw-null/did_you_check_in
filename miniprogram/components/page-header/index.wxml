@@ -1,0 +1,4 @@
+<view class="header">
+  <view class="title">{{title}}</view>
+  <view wx:if="{{description}}" class="description">{{description}}</view>
+</view>

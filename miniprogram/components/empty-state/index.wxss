@@ -1,0 +1,40 @@
+.empty {
+  padding: 72rpx 36rpx;
+  border-radius: var(--radius-card, 36rpx);
+  background: var(--color-surface, #ffffff);
+  text-align: center;
+}
+
+.title {
+  color: var(--color-text, #1d1d1f);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.description {
+  margin-top: 20rpx;
+  color: var(--color-secondary, #626268);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.action {
+  display: inline-block;
+  min-height: 44px;
+  margin-top: 32rpx;
+  padding: 20rpx 36rpx;
+  border-radius: 26rpx;
+  background: var(--color-primary, #0062cc);
+  color: #ffffff;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.action::after {
+  border: 0;
+}
+
+.pressed {
+  opacity: 0.75;
+}

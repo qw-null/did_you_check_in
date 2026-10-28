@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" role="img" aria-labelledby="title description">
+  <title id="title">打卡了吗 · 一起薅福利</title>
+  <desc id="description">暖黄色背景，两只围着蓝色与薄荷绿领巾的小羊共同抱着橙色优惠券。优惠券写着免费，并带有百分号，上方是绿色完成对勾。</desc>
+  <defs>
+    <g id="sheep-head" stroke="#273445" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M-101 157c0-63 44-93 101-93s101 30 101 93v65h-202z" fill="#FFFEF9" stroke-width="12"/>
+      <path d="M-128 20c-30-15-29-56 1-68-16-32 12-64 45-56 8-39 51-50 75-21 27-26 73-13 80 19 37-10 66 20 54 51 32 12 38 51 11 71 16 33-10 64-42 58-17 33-54 38-77 16-27 22-62 13-76-10-37 15-69-4-65-32-17-3-24-19-6-28z" fill="#FFFEF9" stroke-width="12"/>
+      <circle cx="-110" cy="-71" r="29" fill="#F7C878" stroke-width="10"/>
+      <path d="M-118-57c-28-18-9-48 11-36s6 39-8 24c-5-6 0-13 7-11" stroke-width="7"/>
+      <circle cx="110" cy="-71" r="29" fill="#F7C878" stroke-width="10"/>
+      <path d="M118-57c28-18 9-48-11-36s-6 39 8 24c5-6 0-13-7-11" stroke-width="7"/>
+      <path d="M-77 8c-23-35-65-38-64-9 1 30 38 42 63 23" fill="#FFD9B2" stroke-width="10"/>
+      <path d="M77 8c23-35 65-38 64-9-1 30-38 42-63 23" fill="#FFD9B2" stroke-width="10"/>
+      <ellipse cy="27" rx="81" ry="99" fill="#FFE3C1" stroke-width="12"/>
+      <path d="M-80-24c-12-28 3-55 30-52 9-26 36-34 56-13 24-19 56-6 58 19 29-1 43 28 23 51-15 12-35 3-43-12-14 19-37 17-51 2-18 17-40 12-48-6-7 13-17 18-25 11z" fill="#FFFEF9" stroke-width="10"/>
+      <ellipse cx="-48" cy="54" rx="16" ry="10" fill="#FFAB9F" stroke="none"/>
+      <ellipse cx="48" cy="54" rx="16" ry="10" fill="#FFAB9F" stroke="none"/>
+      <circle cx="-30" cy="23" r="9" fill="#273445" stroke="none"/>
+      <circle cx="30" cy="23" r="9" fill="#273445" stroke="none"/>
+      <path d="m-6 51 6 5 6-5" stroke-width="8"/>
+      <path d="M-19 73q19 22 38 0" stroke-width="9"/>
+    </g>
+  </defs>
+
+  <g id="background">
+    <path fill="#FFE5A0" d="M0 0h1024v1024H0z"/>
+    <circle cx="512" cy="508" r="412" fill="#FFF5D5"/>
+  </g>
+
+  <g id="celebration" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m213 244 9 22 23 9-23 9-9 23-9-23-23-9 23-9z" fill="#FFB629"/>
+    <path d="m806 289 8 18 19 8-19 8-8 19-8-19-19-8 19-8z" fill="#FF8B67"/>
+    <path d="m175 545 10 16m672-54-13 13" stroke="#3B98E7" stroke-width="13"/>
+    <circle cx="210" cy="780" r="9" fill="#37BFA0"/>
+    <circle cx="840" cy="757" r="9" fill="#FFAD28"/>
+    <path d="m471 142-9-17m94 17 9-17" stroke="#F4B549" stroke-width="11"/>
+  </g>
+
+  <g id="artwork">
+    <g id="blue-sheep" transform="translate(355 441) rotate(-9) scale(1.04)">
+      <use href="#sheep-head"/>
+      <path d="M-78 113q78 37 156 0l-12 43q-66 26-132 0z" fill="#248AE5" stroke="#273445" stroke-width="11" stroke-linejoin="round"/>
+      <path d="m-24 155-21 41 43-7 13-32" fill="#248AE5" stroke="#273445" stroke-width="10" stroke-linejoin="round"/>
+    </g>
+    <g id="mint-sheep" transform="translate(660 422) rotate(9) scale(1.04)">
+      <use href="#sheep-head"/>
+      <path d="M-78 113q78 37 156 0l-12 43q-66 26-132 0z" fill="#50CFA6" stroke="#273445" stroke-width="11" stroke-linejoin="round"/>
+      <path d="m24 155 21 41-43-7-13-32" fill="#50CFA6" stroke="#273445" stroke-width="10" stroke-linejoin="round"/>
+    </g>
+
+    <g id="shared-check" stroke="#273445" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="512" cy="226" r="65" fill="#50CFA6" stroke-width="11"/>
+      <path d="m484 226 20 21 37-42" stroke="#FFFFFF" stroke-width="22"/>
+    </g>
+
+    <g id="coupon" transform="rotate(-4 512 714)">
+      <path d="M230 614h564q40 0 40 40v32c-33 0-33 48 0 48v64q0 40-44 40H230q-40 0-40-44v-60c33 0 33-48 0-48v-32q0-40 40-40z" fill="#E8C582"/>
+      <path d="M230 600h564q40 0 40 40v32c-33 0-33 48 0 48v64q0 44-44 44H230q-40 0-40-44v-64c33 0 33-48 0-48v-32q0-40 40-40z" fill="#FF7047" stroke="#273445" stroke-width="12" stroke-linejoin="round"/>
+      <path d="M606 630v168" stroke="#FFD2B5" stroke-width="10" stroke-linecap="round" stroke-dasharray="10 19"/>
+      <g id="free-lettering" fill="#FFFFFF" aria-label="免费">
+        <path transform="translate(247.0000 766) scale(0.15200000 -0.15200000)" d="M159 491V227H394C391 221 388 214 384 206C332 115 221 37 49 -27L116 -108C312 -32 435 64 486 178C493 194 500 210 506 227H534V32C534 -49 569 -90 641 -90H841C877 -90 904 -81 921 -63C939 -43 952 17 960 118L861 149C859 83 854 43 848 30C842 18 833 11 821 11H673C649 11 638 26 638 54V227H864V556H642C674 588 707 624 740 666V744H411C424 762 437 782 451 803L346 827C260 703 160 607 46 540L113 460C128 470 143 481 159 491ZM511 556H241C273 585 305 616 336 650H605C573 615 542 584 511 556ZM763 325H534C542 367 548 411 550 459H763V325ZM427 325H261V459H445C442 411 436 366 427 325Z"/>
+        <path transform="translate(399.0000 766) scale(0.15200000 -0.15200000)" d="M233 576H336C334 562 331 547 327 532H221L233 576ZM437 576H560V532H431C433 546 435 560 437 576ZM661 576H869V782H661V823H560V782H438V823H337V782H118V699H337V655H148L108 454H284L279 449C245 416 178 388 77 366L129 285C149 290 168 295 187 301V57H290V246H736V57H840V338H283C313 354 338 371 358 390C376 409 392 430 405 454H560V353H661V454H824C824 442 821 433 817 425C812 419 797 416 772 416C755 416 737 417 718 419L737 348C753 347 769 346 785 346C844 347 882 359 898 381C914 403 923 453 923 532H661V576ZM438 699H560V655H438V699ZM661 699H772V655H661V699ZM576 79 523 1C643 -27 760 -65 873 -113L929 -26C823 16 705 51 576 79ZM458 225C451 141 426 82 382 47C332 13 229 -8 73 -14L115 -108C304 -94 423 -62 472 -14C518 24 548 100 562 215L458 225Z"/>
+      </g>
+      <g id="discount-percent" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round">
+        <circle cx="674" cy="665" r="20"/>
+        <circle cx="750" cy="762" r="20"/>
+        <path d="m666 782 92-138"/>
+      </g>
+    </g>
+
+    <g id="shared-paws" fill="#FFE3C1" stroke="#273445" stroke-width="10">
+      <ellipse cx="260" cy="625" rx="25" ry="37" transform="rotate(-19 260 625)"/>
+      <ellipse cx="764" cy="590" rx="25" ry="37" transform="rotate(15 764 590)"/>
+    </g>
+  </g>
+</svg>

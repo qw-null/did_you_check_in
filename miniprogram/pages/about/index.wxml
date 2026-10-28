@@ -1,0 +1,23 @@
+<view class="page" bindtap="resetTapCount">
+  <view class="brand-block">
+    <image class="brand" src="/assets/brand/avatar.png" mode="aspectFit" aria-label="打卡了吗头像" />
+    <view class="brand-name">{{appName}}</view>
+    <view class="muted">一起发现福利，一起记录完成。</view>
+  </view>
+
+  <view class="card section">
+    <view class="section-title">关于我们</view>
+    <view class="description">{{description}}</view>
+  </view>
+
+  <view class="version-row card section" catchtap="onVersionTap">
+    <text>当前版本</text>
+    <text class="muted">{{version}}</text>
+  </view>
+
+  <view wx:if="{{isDevelopment}}" class="preview-note">
+    <view>开发预览 · 页面骨架</view>
+    <view>{{cloudLabel}}</view>
+    <view>身份与管理员核验需部署 identity 云函数；活动与打卡仍在开发中。</view>
+  </view>
+</view>

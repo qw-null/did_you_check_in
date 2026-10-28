@@ -1,0 +1,75 @@
+.welcome {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  flex-shrink: 0;
+  width: 112rpx;
+  height: 112rpx;
+  border-radius: 50%;
+}
+
+.welcome-copy {
+  min-width: 0;
+  margin-left: 28rpx;
+  font-size: 13px;
+}
+
+.welcome-title {
+  margin-bottom: 8rpx;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.menu {
+  overflow: hidden;
+  border-radius: var(--radius-card);
+  background: var(--color-surface);
+}
+
+.menu-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 56px;
+  padding: 28rpx 36rpx;
+  background: transparent;
+  color: var(--color-text);
+  text-align: left;
+  line-height: 1.5;
+}
+
+.menu-row + .menu-row {
+  border-top: 1px solid var(--color-divider);
+}
+
+.chevron {
+  margin-left: 24rpx;
+  color: var(--color-secondary);
+  font-size: 22px;
+}
+
+.user-id {
+  overflow-wrap: anywhere;
+  word-break: break-all;
+  color: var(--color-secondary);
+  font-size: 13px;
+}
+
+.copy-button {
+  min-height: 44px;
+  margin: 24rpx 0;
+  padding: 16rpx 28rpx;
+  border-radius: 24rpx;
+  background: #edf4ff;
+  color: var(--color-primary);
+  line-height: 1.6;
+}
+
+.identity-error {
+  margin-top: 24rpx;
+  color: #c62828;
+  font-size: 13px;
+}
