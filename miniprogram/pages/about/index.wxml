@@ -16,8 +16,8 @@
   </view>
 
   <view wx:if="{{isDevelopment}}" class="preview-note">
-    <view>开发预览 · 页面骨架</view>
+    <view>开发预览 · 登录与个人中心</view>
     <view>{{cloudLabel}}</view>
-    <view>身份与管理员核验需部署 identity 云函数；活动与打卡仍在开发中。</view>
+    <view>资料与统计需部署新版 identity 并创建业务集合；活动与打卡写入仍在开发中。</view>
   </view>
 </view>

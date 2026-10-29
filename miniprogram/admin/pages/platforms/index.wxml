@@ -1,0 +1,34 @@
+<view class="page">
+  <view wx:if="{{!authorized && loading}}" class="card">正在核验管理员身份…</view>
+  <view wx:if="{{!authorized && !loading && error}}" class="card error">{{error}}</view>
+  <block wx:elif="{{authorized}}">
+    <view class="admin-toolbar">
+      <view class="toolbar-copy"><view class="section-title">平台</view><view class="toolbar-caption">管理活动所属平台</view></view>
+      <button class="primary-button add-button" bindtap="onAdd"><text class="add-mark">+</text>新增平台</button>
+    </view>
+    <view wx:if="{{error}}" class="card error">{{error}}</view>
+    <view wx:for="{{items}}" wx:key="_id" class="platform-row card">
+      <view class="platform-copy"><view class="row-title">{{item.name}}</view><view class="muted">{{item.description || '暂无说明'}}</view><view class="status {{item.status === 'enabled' ? 'enabled' : 'disabled'}}">{{item.status === 'enabled' ? '已启用' : '已停用'}}</view></view>
+      <view class="row-actions"><button data-id="{{item._id}}" bindtap="onEdit">编辑</button><button data-id="{{item._id}}" bindtap="onToggleStatus">{{item.status === 'enabled' ? '停用' : '恢复'}}</button></view>
+    </view>
+    <view wx:if="{{loading}}" class="muted footer">正在加载…</view>
+    <view wx:if="{{!loading && !items.length && !error}}" class="card">还没有平台，请先新增一个平台。</view>
+    <view wx:if="{{editorOpen}}" class="editor-backdrop" bindtap="onCloseEditor">
+      <view class="editor-panel" catchtap="onModalTap">
+        <view class="editor-heading">
+          <view class="section-title">{{draft._id ? '编辑平台' : '新增平台'}}</view>
+          <view class="editor-caption">填写平台名称及可选信息</view>
+        </view>
+        <scroll-view class="editor-form" scroll-y="true">
+          <view class="field-label">平台名称 <text class="required-mark">必填</text></view>
+          <input class="editor-input" placeholder="例如：微信支付" maxlength="40" value="{{draft.name}}" data-field="name" bindinput="onInput" />
+          <view class="field-label">平台说明 <text class="optional-mark">选填</text></view>
+          <textarea class="editor-textarea" auto-height="{{false}}" disable-default-padding="true" placeholder="简要说明平台及活动来源" maxlength="500" value="{{draft.description}}" data-field="description" bindinput="onInput" />
+          <view class="field-label">平台官网 <text class="optional-mark">选填</text></view>
+          <input class="editor-input" placeholder="https://example.com" value="{{draft.official_url}}" data-field="official_url" bindinput="onInput" />
+        </scroll-view>
+        <view class="editor-actions"><button class="cancel-button" bindtap="onCloseEditor">取消</button><button class="primary-button save-button" loading="{{saving}}" bindtap="onSave">保存平台</button></view>
+      </view>
+    </view>
+  </block>
+</view>

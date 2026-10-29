@@ -1,0 +1,65 @@
+<view class="page detail-page">
+  <view wx:if="{{pageLoading}}" class="card loading-state">正在加载活动详情…</view>
+  <view wx:elif="{{error}}" class="card error-state">{{error}}</view>
+  <block wx:elif="{{authenticated && item}}">
+    <view wx:if="{{item.restricted}}" class="card restricted-state">
+      <view class="state-title">活动信息已限制展示</view>
+      <view class="muted">为保障使用安全，此活动的详情与入口暂不公开。</view>
+    </view>
+    <block wx:else>
+      <view class="activity-heading card">
+        <view class="platform-name">{{item.platform_name}}</view>
+        <view class="activity-title">{{item.title}}</view>
+        <view class="tag-row"><text class="tag">{{item.category === 'points' ? '积分奖励' : (item.category === 'gift' ? '实物礼品' : '优惠权益')}}</text><text class="tag">{{item.frequency === 'daily' ? '每日任务' : '一次性'}}</text></view>
+      </view>
+
+      <view class="card section">
+        <view class="section-title">参与步骤</view>
+        <view wx:if="{{!item.executable}}" class="status-note step-status">{{item.status_label}}</view>
+        <view wx:for="{{item.participation_steps}}" wx:for-item="step" wx:key="index" class="step-row">
+          <text class="step-number">{{index + 1}}</text>
+          <view class="step-copy">
+            <text class="step-text">{{step.text}}</text>
+            <view wx:if="{{step.images.length}}" class="step-images">
+              <block wx:for="{{step.images}}" wx:for-item="file" wx:for-index="imageIndex" wx:key="*this">
+                <image wx:if="{{step.image_urls[imageIndex]}}" class="step-image" src="{{step.image_urls[imageIndex]}}" mode="aspectFill" lazy-load="true" data-url="{{step.image_urls[imageIndex]}}" bindtap="onPreviewImage" aria-label="点击查看步骤图片大图" />
+                <view wx:else class="image-unavailable">图片暂不可用</view>
+              </block>
+            </view>
+            <view wx:if="{{step.images.length}}" class="image-preview-hint">点击图片查看大图</view>
+          </view>
+        </view>
+        <view wx:if="{{item.executable && item.search_keyword}}" class="detail-line">搜索关键词：{{item.search_keyword}}</view>
+        <button wx:if="{{item.executable && item.entry_type === 'mini_program' && item.direct_open_enabled}}" class="primary-button entry-button" loading="{{opening}}" disabled="{{opening}}" bindtap="onOpenEntry">打开活动小程序</button>
+        <button wx:if="{{item.executable}}" class="primary-button entry-button" bindtap="onCopyEntry">{{copied ? '已复制参与信息' : '复制参与入口或步骤'}}</button>
+        <view wx:else class="muted detail-line">活动信息目前不可执行，请留意状态说明。</view>
+        <view wx:if="{{entryMessage}}" class="status-note">{{entryMessage}}</view>
+      </view>
+
+      <view class="card section">
+        <view class="section-title">活动说明与期限</view>
+        <view wx:if="{{item.activity_info}}" class="activity-info">{{item.activity_info}}</view>
+        <view class="detail-line">期限类型：{{item.validity_type === 'fixed' ? '固定期限' : (item.validity_type === 'ongoing' ? '长期开展' : '截止时间未知')}}</view>
+        <view wx:if="{{item.start_at}}" class="detail-line">开始日期：{{item.start_at}}</view>
+        <view wx:if="{{item.end_at}}" class="detail-line">结束日期：{{item.end_at}}（当日结束）</view>
+      </view>
+
+      <view class="verification-note muted">核验时间：{{item.last_verified_at}}</view>
+    </block>
+    <view class="card personal-actions" wx:if="{{item.personal}}">
+      <view class="personal-date">{{businessDate}} · 北京时间</view>
+      <button wx:if="{{item.personal.can_join}}" class="primary-button personal-button" disabled="{{working}}" loading="{{working}}" bindtap="onJoinActivity">{{item.personal.removed ? '重新加入我的打卡' : '加入我的打卡'}}</button>
+      <view wx:elif="{{item.personal.joined}}" class="joined-label">{{item.personal.completed ? (item.frequency === 'once' ? '该一次性活动已完成' : '今日已完成') : '已加入我的打卡'}}</view>
+      <view wx:else class="muted">当前活动不可加入，请留意状态说明。</view>
+      <button wx:if="{{item.personal.can_complete}}" class="primary-button personal-button" disabled="{{working}}" loading="{{working}}" bindtap="onComplete">标记完成</button>
+      <button class="checkins-button" bindtap="onOpenCheckins">查看我的打卡</button>
+      <view wx:if="{{personalMessage}}" class="status-note">{{personalMessage}}</view>
+      <view class="manual-note">仅记录你的主动确认，不代表第三方核验或奖励到账。</view>
+    </view>
+  </block>
+  <view wx:elif="{{!authenticated && !loginLoading}}" class="login-gate">
+    <view class="gate-title">查看活动详情需登录</view>
+    <view class="gate-description">{{loginError || '请登录后查看活动参与条件与入口。'}}</view>
+    <button class="primary-button gate-button" bindtap="onLogin">微信登录</button>
+  </view>
+</view>

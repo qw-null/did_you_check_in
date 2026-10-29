@@ -1,5 +1,6 @@
 {
   "navigationBarTitleText": "运营工作台",
-  "enableShareAppMessage": false,
-  "enableShareTimeline": false
+  "usingComponents": {
+    "page-header": "/components/page-header/index"
+  }
 }

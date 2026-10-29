@@ -1,13 +1,17 @@
 {
   "name": "did-you-check-in",
-  "version": "0.2.0",
+  "version": "0.5.0",
   "private": true,
   "description": "打卡了吗：原生微信小程序与云开发项目",
   "scripts": {
+    "build:vendor": "node scripts/build-vant.mjs",
     "check": "node scripts/check-project.mjs",
     "test": "node --test tests/*.test.cjs"
   },
   "engines": {
     "node": ">=18"
+  },
+  "devDependencies": {
+    "@vant/weapp": "1.11.7"
   }
 }

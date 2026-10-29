@@ -1,16 +1,63 @@
 <view class="page">
-  <page-header title="活动广场" description="把喜欢的福利，收进每天的清单。" />
-
-  <view class="intro card">
-    <image class="brand" src="/assets/brand/avatar.png" mode="aspectFit" aria-label="打卡了吗头像" />
-    <view class="intro-copy">
-      <view class="intro-title">一起发现，一起打卡</view>
-      <view class="muted">积分、礼品与优惠权益</view>
+  <view class="square-heading">
+    <view class="heading-copy">
+      <view class="heading-title">活动广场</view>
+      <view class="heading-description">把喜欢的福利，收进每天的清单。</view>
+      <view class="heading-caption">一起发现 · 一起打卡</view>
     </view>
+    <image class="heading-brand" src="/assets/brand/avatar.png" mode="aspectFit" aria-label="打卡了吗头像" />
   </view>
 
-  <view class="section">
+  <button wx:if="{{authenticated}}" class="today-summary" bindtap="onOpenCheckins">{{todayProgress ? (todayProgress.pending ? '今日还有 ' + todayProgress.pending + ' 项待完成' : (todayProgress.total ? '今日已完成，去看看记录' : '今日暂无任务，去看看我的清单')) : '查看我的打卡'}}<text>›</text></button>
+
+  <view class="section discovery">
     <view class="section-title">发现活动</view>
-    <empty-state title="活动列表准备中" description="本阶段已搭建页面骨架，活动查询将在云端接口接入后开放。" action-text="看看我的打卡" bind:action="onOpenCheckins" />
+    <block wx:if="{{authenticated}}">
+      <view class="search-row">
+        <input class="search-input" value="{{query}}" maxlength="60" confirm-type="search" placeholder="搜索活动或平台" bindinput="onSearchInput" bindconfirm="onSearch" />
+        <button class="search-button" bindtap="onSearch">搜索</button>
+      </view>
+      <view class="category-row">
+        <view class="category {{category === 'all' ? 'selected' : ''}}" data-category="all" bindtap="onChooseCategory">全部</view>
+        <view class="category {{category === 'points' ? 'selected' : ''}}" data-category="points" bindtap="onChooseCategory">积分奖励</view>
+        <view class="category {{category === 'gift' ? 'selected' : ''}}" data-category="gift" bindtap="onChooseCategory">实物礼品</view>
+        <view class="category {{category === 'benefit' ? 'selected' : ''}}" data-category="benefit" bindtap="onChooseCategory">优惠权益</view>
+      </view>
+      <view class="quick-filters">
+        <button size="mini" class="filter {{daily ? 'filter-active' : ''}}" data-filter="daily" bindtap="onToggleFilter">每日任务</button>
+        <button size="mini" class="filter {{ending ? 'filter-active' : ''}}" data-filter="ending" bindtap="onToggleFilter">即将结束</button>
+      </view>
+      <view wx:if="{{listError}}" class="list-message card">
+        <view>{{listError}}</view>
+        <button class="text-button" bindtap="onRetry">重试</button>
+      </view>
+      <view wx:for="{{items}}" wx:key="id" class="activity-card card" data-id="{{item.id}}" bindtap="onOpenActivity" hover-class="activity-card-pressed">
+        <view class="activity-meta">
+          <view class="platform-group"><text class="platform">{{item.platform_name}}</text><text wx:if="{{item.personal.completed}}" class="completion-note">{{item.frequency === 'once' ? '已完成' : '今日已完成'}}</text></view>
+          <text class="verified">核验于 {{item.last_verified_at}}</text>
+        </view>
+        <view class="activity-title">{{item.title}}</view>
+        <view wx:if="{{item.reward_summary}}" class="reward">{{item.reward_summary}}</view>
+        <view class="activity-footer">
+          <view class="tags"><text class="tag">{{item.category === 'points' ? '积分奖励' : (item.category === 'gift' ? '实物礼品' : '优惠权益')}}</text><text class="tag">{{item.frequency === 'daily' ? '每日任务' : '一次性'}}</text></view>
+          <button size="mini" class="join-button {{item.personal.joined ? 'join-button-added' : ''}}" data-id="{{item.id}}" disabled="{{joining || item.personal.joined}}" loading="{{joining === item.id}}" catchtap="onJoin">{{item.personal.joined ? '已加入' : item.personal.removed ? '重新加入' : '加入打卡'}}</button>
+        </view>
+        <view class="activity-note"><text class="validity">{{item.validity_note || (item.end_at ? '截止 ' + item.end_at : '长期活动')}}</text><text wx:if="{{item.eligibility}}" class="eligibility">{{item.eligibility}}</text></view>
+      </view>
+      <empty-state wx:if="{{empty && !listError && !listLoading}}" title="没有符合条件的活动" description="试试调整搜索词或筛选条件。" action-text="清空筛选" bind:action="onClearFilters" />
+      <view wx:if="{{listLoading}}" class="list-footer muted">{{items.length ? '正在加载更多…' : '正在加载活动…'}}</view>
+      <view wx:elif="{{!hasMore && items.length && !listError}}" class="list-footer muted">已显示全部活动</view>
+    </block>
+    <view wx:else class="discovery-locked">
+      <view class="activity-placeholders" aria-hidden="true">
+        <view class="activity-placeholder"><view class="placeholder-image" /><view class="placeholder-lines"><view /><view /></view></view>
+        <view class="activity-placeholder"><view class="placeholder-image" /><view class="placeholder-lines"><view /><view /></view></view>
+      </view>
+      <view class="discovery-mask login-gate">
+        <view class="gate-title">{{loginLoading ? '正在登录微信账号' : '登录后发现更多活动'}}</view>
+        <view class="gate-description">{{loginError || '登录后即可查看活动，并同步你的打卡清单。'}}</view>
+        <button class="primary-button gate-button" loading="{{loginLoading}}" disabled="{{loginLoading}}" bindtap="onLogin">{{loginLoading ? '登录中' : '微信登录'}}</button>
+      </view>
+    </view>
   </view>
 </view>

@@ -1,0 +1,30 @@
+.detail-page { padding-bottom: calc(64rpx + env(safe-area-inset-bottom)); }
+.activity-heading { padding: 28rpx; border-radius: 26rpx; }
+.platform-name { color: var(--color-secondary); font-size: 12px; overflow-wrap: anywhere; }
+.activity-title { margin-top: 10rpx; font-size: 20px; font-weight: 600; line-height: 1.45; overflow-wrap: anywhere; }
+.tag-row { display: flex; flex-wrap: wrap; gap: 10rpx; margin-top: 18rpx; }
+.tag { padding: 6rpx 14rpx; border-radius: 10rpx; background: #eef4fc; color: #315c91; font-size: 11px; }
+.detail-page .section { margin-top: 24rpx; }
+.detail-page .section-title { margin-bottom: 18rpx; font-size: 16px; }
+.detail-line { margin-top: 18rpx; color: var(--color-secondary); white-space: pre-wrap; overflow-wrap: anywhere; }
+.status-note { margin-top: 16rpx; color: #a35b15; font-weight: 600; }
+.step-row { display: flex; align-items: flex-start; padding: 18rpx 0; border-bottom: 1rpx solid #eef0f3; }
+.step-row:last-child { border-bottom: 0; }
+.step-number { display: flex; flex-shrink: 0; align-items: center; justify-content: center; width: 42rpx; height: 42rpx; margin-right: 16rpx; border-radius: 50%; background: #edf4ff; color: #0062cc; font-size: 12px; }
+.step-copy { flex: 1; min-width: 0; overflow-wrap:anywhere; }
+.step-text { white-space:pre-wrap; }
+.step-status { margin: 0 0 16rpx; }
+.activity-info { white-space:pre-wrap; overflow-wrap:anywhere; }
+.step-images { display:flex; flex-wrap:wrap; gap:12rpx; margin-top:14rpx; }
+.step-image { display:block; flex:none; width:144rpx; height:144rpx; border:1rpx solid #e5e9ed; border-radius:14rpx; background:#edf0ee; }
+.image-unavailable { display:flex; flex:none; align-items:center; justify-content:center; width:144rpx; height:144rpx; padding:12rpx; border-radius:14rpx; background:#edf0ee; color:#687078; font-size:11px; text-align:center; }
+.image-preview-hint { margin-top:8rpx; color:#737982; font-size:11px; }
+button.entry-button { width: 100%; margin-top: 28rpx; }
+.verification-note { margin: 24rpx 8rpx; font-size: 11px; }
+.restricted-state, .error-state, .loading-state { margin-top: 24rpx; }
+.state-title { margin-bottom: 12rpx; font-size: 18px; font-weight: 600; }
+.personal-actions { margin-top:24rpx; }
+.personal-date,.manual-note { color:#626268; font-size:12px; }
+.joined-label { margin-top:16rpx; color:#176b52; font-weight:600; }
+button.personal-button { width:100%; margin-top:20rpx; }
+button.checkins-button { width:100%; margin:20rpx 0; padding:20rpx; border-radius:24rpx; background:#edf3fc; color:#0062cc; }

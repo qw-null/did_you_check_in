@@ -10,6 +10,7 @@ const project = readJson(resolve(root, 'project.config.json'));
 const appRoot = resolve(root, project.miniprogramRoot);
 const app = readJson(resolve(appRoot, 'app.json'));
 const files = [];
+const checkedComponents = new Set();
 
 function walk(directory) {
   for (const entry of readdirSync(directory, { withFileTypes: true })) {
@@ -24,16 +25,29 @@ function checkModule(base, component = false) {
   for (const extension of ['js', 'json', 'wxml', 'wxss']) {
     assert(existsSync(`${base}.${extension}`), `缺少页面或组件文件：${base}.${extension}`);
   }
-  if (component) assert.equal(readJson(`${base}.json`).component, true);
+  const config = readJson(`${base}.json`);
+  if (component) assert.equal(config.component, true);
 
   const markup = readFileSync(`${base}.wxml`, 'utf8');
   const code = readFileSync(`${base}.js`, 'utf8');
-  for (const match of markup.matchAll(/(?:bind|catch)(?::)?[a-z]+\s*=\s*"([A-Za-z_]\w*)"/g)) {
-    assert(new RegExp(`\\b${match[1]}\\s*\\(`).test(code), `事件处理方法不存在：${base} → ${match[1]}`);
+  const eventCode = code.includes('Page(createLoginPage(')
+    ? `${code}\n${readFileSync(resolve(appRoot, 'services/login-page.js'), 'utf8')}`
+    : code;
+  for (const match of markup.matchAll(/(?:bind|catch)(?::)?[\w-]+\s*=\s*"([A-Za-z_]\w*)"/g)) {
+    assert(new RegExp(`\\b${match[1]}\\s*(?::\\s*function\\s*)?\\(`).test(eventCode), `事件处理方法不存在：${base} → ${match[1]}`);
   }
   for (const match of markup.matchAll(/\bsrc="(\/[^"{}]+)"/g)) {
     assert(existsSync(resolve(appRoot, `.${match[1]}`)), `图片不存在：${match[1]}`);
   }
+  for (const path of Object.values(config.usingComponents || {})) {
+    checkComponent(path.startsWith('/') ? resolve(appRoot, `.${path}`) : resolve(dirname(base), path));
+  }
+}
+
+function checkComponent(base) {
+  if (checkedComponents.has(base)) return;
+  checkedComponents.add(base);
+  checkModule(base, true);
 }
 
 assert.match(project.appid, /^wx[0-9a-f]{16}$/);
@@ -55,7 +69,7 @@ for (const subpackage of app.subPackages || []) {
   }
 }
 for (const path of Object.values(app.usingComponents || {})) {
-  checkModule(resolve(appRoot, `.${path}`), true);
+  checkComponent(resolve(appRoot, `.${path}`));
 }
 for (const tab of app.tabBar.list) {
   assert(app.pages.includes(tab.pagePath), `底部 tab 未注册：${tab.pagePath}`);
@@ -81,5 +95,5 @@ for (const path of files) {
   scriptsChecked += 1;
 }
 
-console.log(`检查通过：${app.pages.length} 个主包页面、${subpackagePages} 个分包页面、${Object.keys(app.usingComponents).length} 个组件、${scriptsChecked} 个 JS 文件语法、底部导航和静态资源引用。`);
+console.log(`检查通过：${app.pages.length} 个主包页面、${subpackagePages} 个分包页面、${checkedComponents.size} 个组件、${scriptsChecked} 个 JS 文件语法、底部导航和静态资源引用。`);
 console.log('检查仅覆盖工程结构与 JavaScript 语法；WXML/WXSS 编译、界面与云端行为需在微信开发者工具/真机验证。');

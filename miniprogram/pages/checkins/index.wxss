@@ -1,23 +1,51 @@
 .view-tabs {
   display: flex;
-  margin-bottom: 32rpx;
-  padding: 8rpx;
-  border-radius: 28rpx;
+  margin-bottom: 24rpx;
+  padding: 6rpx;
+  border-radius: 22rpx;
   background: #e9e9ef;
 }
 
-.view-tab {
-  flex: 1;
-  min-height: 44px;
-  padding: 20rpx;
-  border-radius: 22rpx;
+.view-tabs button.view-tab {
+  flex: 1 1 0;
+  width: auto;
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 14rpx 20rpx;
+  border-radius: 18rpx;
   background: transparent;
   color: var(--color-secondary);
+  font-size: 14px;
   line-height: 1.5;
 }
 
-.selected {
+.view-tabs button.selected {
   background: #ffffff;
   color: var(--color-text);
   font-weight: 600;
 }
+
+.progress-card { margin-bottom:24rpx; background:#eaf3ee; }
+.business-date { color:#50685b; font-size:12px; }
+.progress-title { margin-top:14rpx; color:#164e38; font-size:22px; font-weight:600; }
+.progress-description { margin:12rpx 0 22rpx; color:#50685b; font-size:13px; }
+.filter-controls { width:100%; margin:20rpx 0; }
+.filter-row { display:flex; flex-wrap:wrap; gap:12rpx; width:100%; min-width:0; }
+.filter-row button.filter-button { display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto; width:auto; min-width:0; max-width:100%; height:60rpx; min-height:0; margin:0; padding:0 22rpx; border:1rpx solid #e3e6ea; border-radius:16rpx; background:#fff; color:#626268; font-size:12px; line-height:normal; white-space:nowrap; box-sizing:border-box; }
+.filter-row button.filter-selected { border-color:#176b52; background:#176b52; color:#fff; }
+.task-card { margin-top:20rpx; padding:28rpx; }
+.task-meta { display:flex; justify-content:space-between; gap:16rpx; color:#626268; font-size:12px; }
+.task-title { margin:12rpx 0; font-size:18px; font-weight:600; overflow-wrap:anywhere; }
+.task-state { color:#a35b15; font-size:13px; }
+.completed-state { color:#176b52; }
+.task-description { margin-top:8rpx; color:#626268; font-size:12px; }
+.task-actions { display:flex; flex-wrap:wrap; gap:12rpx; margin-top:24rpx; }
+.task-actions button { flex:1; min-height:76rpx; margin:0; padding:16rpx 20rpx; border-radius:20rpx; font-size:13px; line-height:44rpx; }
+button.guide-button { background:#edf3fc; color:#0062cc; }
+button.complete-button { background:#176b52; color:#fff; }
+button.remove-button { flex:none; background:transparent; color:#8a4540; }
+.notice { margin:20rpx 4rpx; color:#176b52; font-size:13px; }
+.error-card { margin-top:20rpx; color:#a43f35; font-size:13px; }
+button.retry-button,button.load-more { width:100%; margin-top:16rpx; padding:16rpx; border-radius:20rpx; background:#edf3fc; color:#0062cc; font-size:13px; }
+.manual-note,.list-footer { margin-top:28rpx; color:#626268; font-size:12px; text-align:center; }

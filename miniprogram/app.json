@@ -3,13 +3,15 @@
     "pages/square/index",
     "pages/checkins/index",
     "pages/profile/index",
-    "pages/about/index"
+    "pages/about/index",
+    "pages/activity-detail/index",
+    "pages/checkin-history/index"
   ],
   "subPackages": [
     {
       "root": "admin",
       "name": "admin",
-      "pages": ["pages/dashboard/index"]
+      "pages": ["pages/dashboard/index", "pages/platforms/index", "pages/activities/index", "pages/activity-editor/index"]
     }
   ],
   "window": {
@@ -44,10 +46,6 @@
         "selectedIconPath": "assets/tabbar/profile-selected.png"
       }
     ]
-  },
-  "usingComponents": {
-    "page-header": "/components/page-header/index",
-    "empty-state": "/components/empty-state/index"
   },
   "style": "v2",
   "lazyCodeLoading": "requiredComponents",

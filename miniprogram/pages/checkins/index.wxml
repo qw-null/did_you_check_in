@@ -1,11 +1,50 @@
 <view class="page">
   <page-header title="我的打卡" description="一份清单，记下每天的小收获。" />
 
-  <view class="view-tabs">
-    <button class="view-tab {{currentView === 'today' ? 'selected' : ''}}" data-view="today" bindtap="onViewChange" hover-class="button-pressed">今日</button>
-    <button class="view-tab {{currentView === 'all' ? 'selected' : ''}}" data-view="all" bindtap="onViewChange" hover-class="button-pressed">全部</button>
+  <view wx:if="{{!authenticated}}" class="login-gate">
+    <view class="gate-title">{{loginLoading ? '正在登录微信账号' : '登录后查看我的打卡'}}</view>
+    <view class="gate-description">{{loginError || '清单与完成记录会跟随当前微信账号保存。'}}</view>
+    <button class="primary-button gate-button" loading="{{loginLoading}}" disabled="{{loginLoading}}" bindtap="onLogin">{{loginLoading ? '登录中' : '微信登录'}}</button>
   </view>
 
-  <empty-state wx:if="{{currentView === 'today'}}" title="今日待办准备中" description="加入活动与手动完成将在云端功能接入后开放。" action-text="去活动广场" bind:action="onOpenSquare" />
-  <empty-state wx:else title="个人清单准备中" description="后续可以在这里查看已加入、已完成和暂不可参与的活动。" action-text="去活动广场" bind:action="onOpenSquare" />
+  <block wx:else>
+  <view class="view-tabs">
+    <button size="mini" class="view-tab {{currentView === 'today' ? 'selected' : ''}}" data-view="today" bindtap="onViewChange" hover-class="button-pressed">今日</button>
+    <button size="mini" class="view-tab {{currentView === 'all' ? 'selected' : ''}}" data-view="all" bindtap="onViewChange" hover-class="button-pressed">全部</button>
+  </view>
+
+  <view class="progress-card card">
+    <view class="business-date">{{businessDate || '正在同步日期'}} · 北京时间</view>
+    <block wx:if="{{progress}}">
+      <view class="progress-title">{{progress.total ? (progress.completed === progress.total ? '今日已完成' : '今日已完成 ' + progress.completed + ' / ' + progress.total + ' 项') : '今日暂无任务'}}</view>
+      <view class="progress-description">{{progress.pending ? '还有 ' + progress.pending + ' 项，按自己的节奏参与。' : '每一次手动确认，都会为你保留记录。'}}</view>
+      <progress wx:if="{{progress.total}}" percent="{{progress.completed * 100 / progress.total}}" stroke-width="6" activeColor="#176b52" backgroundColor="#dce9e2" border-radius="6" />
+    </block>
+    <view wx:else class="progress-description">{{listLoading ? '正在同步今日进度…' : '今日进度暂不可用'}}</view>
+  </view>
+
+  <view class="filter-controls">
+    <view class="filter-row">
+      <button size="mini" wx:for="{{currentView === 'today' ? todayFilters : allFilters}}" wx:key="value" class="filter-button {{filter === item.value ? 'filter-selected' : ''}}" data-filter="{{item.value}}" disabled="{{working}}" bindtap="onFilterChange">{{item.label}}</button>
+    </view>
+  </view>
+  <view wx:if="{{notice}}" class="notice">{{notice}}</view>
+  <view wx:if="{{error}}" class="card error-card"><view>{{error}}</view><button class="retry-button" bindtap="onRetry">刷新清单</button></view>
+  <view wx:for="{{items}}" wx:key="id" class="task-card card">
+    <view class="task-meta"><text>{{item.platform_name || '个人清单'}}</text><text>{{item.frequency === 'daily' ? '每日任务' : item.frequency === 'once' ? '一次性' : ''}}</text></view>
+    <view class="task-title" data-id="{{item.id}}" bindtap="onOpenActivity">{{item.title}}</view>
+    <view class="task-state {{item.completed ? 'completed-state' : ''}}">{{item.status_label}}</view>
+    <view wx:if="{{!item.executable && item.status_label !== item.activity_status}}" class="task-description">{{item.activity_status}}</view>
+    <view wx:if="{{item.completed_time}}" class="task-description">手动确认于 {{item.completed_time}}</view>
+    <view class="task-actions">
+      <button class="guide-button" data-id="{{item.id}}" bindtap="onOpenActivity">{{item.executable ? (item.joined ? '参与指引' : '查看与重新加入') : '查看状态'}}</button>
+      <button wx:if="{{item.can_complete}}" class="complete-button" data-id="{{item.id}}" disabled="{{working || listLoading}}" loading="{{working}}" bindtap="onComplete">标记完成</button>
+      <button wx:if="{{currentView === 'all' && item.joined}}" class="remove-button" data-id="{{item.id}}" disabled="{{working}}" bindtap="onRemove">移除</button>
+    </view>
+  </view>
+  <empty-state wx:if="{{loaded && !items.length && !listLoading && !error}}" title="{{currentView === 'today' ? (filter === 'completed' ? '今天还没有完成记录' : (progress.total ? '今日待办已完成' : '今日暂无任务')) : '这里还没有活动'}}" description="{{currentView === 'all' && filter === 'all' ? '去广场发现喜欢的活动，加入后会出现在这里。' : '可以切换筛选，或去活动广场看看。'}}" action-text="去活动广场" bind:action="onOpenSquare" />
+  <view wx:if="{{listLoading}}" class="list-footer muted">正在同步清单…</view>
+  <button wx:elif="{{cursor}}" class="load-more" bindtap="onLoadMore">加载更多</button>
+  <view class="manual-note">完成仅代表你的主动确认，不代表第三方平台核验或奖励到账。</view>
+  </block>
 </view>

@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "活动编辑",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "van-uploader": "../../vendor/vant/uploader/index"
+  }
+}

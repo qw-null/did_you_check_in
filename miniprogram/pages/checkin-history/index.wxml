@@ -1,0 +1,22 @@
+<view class="page">
+  <view class="history-title">每一次参与，都有记录</view>
+  <view class="history-note">以下为你的手动确认，时间采用北京时间。记录不代表第三方核验或奖励到账。</view>
+  <view wx:if="{{!authenticated}}" class="login-gate">
+    <view class="gate-title">{{loginLoading ? '正在登录' : '登录后查看打卡记录'}}</view>
+    <view class="gate-description">{{loginError}}</view>
+    <button class="primary-button gate-button" loading="{{loginLoading}}" disabled="{{loginLoading}}" bindtap="onLogin">微信登录</button>
+  </view>
+  <block wx:else>
+    <view wx:if="{{error}}" class="card error"><view>{{error}}</view><button bindtap="onRetry">重新加载</button></view>
+    <view wx:for="{{items}}" wx:key="id" class="record-card card" data-id="{{item.activity_id}}" bindtap="onOpenActivity">
+      <view class="record-meta">{{item.platform_name || '个人记录'}} · {{item.frequency === 'daily' ? '每日任务' : '一次性'}}</view>
+      <view class="record-title">{{item.title}}</view>
+      <view class="record-date">{{item.checkin_date}} · 已手动确认</view>
+      <view class="record-meta">完成时间：{{item.completed_time}}</view>
+    </view>
+    <view wx:if="{{loading}}" class="empty">正在加载记录…</view>
+    <view wx:elif="{{loaded && !items.length && !error}}" class="card empty">还没有完成记录，参与后可在“我的打卡”中手动确认。</view>
+    <button wx:elif="{{cursor}}" class="load-more" bindtap="onLoadMore">加载更多</button>
+    <view wx:elif="{{items.length && !error}}" class="empty">已显示全部记录</view>
+  </block>
+</view>

@@ -1,0 +1,59 @@
+<view class="page">
+  <view wx:if="{{loading}}" class="card">正在加载活动…</view>
+  <view wx:if="{{!authorized && !loading && error}}" class="card error">{{error}}</view>
+  <block wx:elif="{{authorized}}">
+    <view wx:if="{{error}}" class="card error">{{error}}</view>
+    <view class="section-block">
+      <view class="section-title">基本信息</view>
+      <picker range="{{platformNames}}" value="{{platformIndex}}" bindchange="onPlatformChange"><view class="picker-row">所属平台：{{platformNames[platformIndex] || '请选择'}}</view></picker>
+      <input placeholder="活动名称" maxlength="60" value="{{activity.title}}" data-field="title" bindinput="onInput" />
+      <picker range="{{labels.category}}" value="{{categoryIndex}}" data-field="category" bindchange="onOptionChange"><view class="picker-row">奖励类型：{{labels.category[categoryIndex]}}</view></picker>
+      <picker range="{{labels.frequency}}" value="{{frequencyIndex}}" data-field="frequency" bindchange="onOptionChange"><view class="picker-row">任务频率：{{labels.frequency[frequencyIndex]}}</view></picker>
+      <input placeholder="搜索关键词，多个词用空格分隔" maxlength="200" value="{{activity.keywords}}" data-field="keywords" bindinput="onInput" />
+      <view class="field-label">活动信息</view>
+      <textarea class="form-textarea large-textarea" auto-height="{{false}}" disable-default-padding="true" placeholder="活动内容、奖励、参与条件与注意事项" maxlength="3000" value="{{activity.activity_info}}" data-field="activity_info" bindinput="onInput" />
+    </view>
+
+    <view class="section-block">
+      <view class="section-title">参与方式</view>
+      <picker range="{{labels.entry_type}}" value="{{entryTypeIndex}}" data-field="entry_type" bindchange="onOptionChange"><view class="picker-row">入口类型：{{labels.entry_type[entryTypeIndex]}}</view></picker>
+      <block wx:if="{{activity.entry_type === 'web' || activity.entry_type === 'mini_program'}}">
+        <view class="field-label">目标地址</view>
+        <input placeholder="{{activity.entry_type === 'mini_program' ? '#小程序://名称/链接' : 'https://example.com'}}" maxlength="2048" value="{{activity.target_address}}" data-field="target_address" bindinput="onInput" />
+      </block>
+      <view class="field-label">搜索关键词</view>
+      <input placeholder="参与时使用的搜索词（可选）" maxlength="100" value="{{activity.search_keyword}}" data-field="search_keyword" bindinput="onInput" />
+      <view class="field-label">参与步骤</view>
+      <view wx:for="{{activity.participation_steps}}" wx:key="index" class="step-editor">
+        <view class="step-heading"><text>步骤 {{index + 1}}</text><button class="step-remove" data-index="{{index}}" disabled="{{uploading || saving || working}}" bindtap="onRemoveStep">删除步骤</button></view>
+        <textarea class="form-textarea" auto-height="{{false}}" disable-default-padding="true" placeholder="填写这一步的操作" maxlength="2000" value="{{item.text}}" data-index="{{index}}" bindinput="onStepInput" />
+        <van-uploader name="{{index}}" file-list="{{item.file_list}}" accept="image" image-fit="aspectFill" preview-size="76" max-count="3" multiple size-type="{{imageSizeType}}" upload-text="添加图片" preview-full-image="{{false}}" disabled="{{uploading || saving || working}}" deletable="{{!uploading && !saving && !working}}" bind:after-read="onImagesSelected" bind:delete="onDeleteStepImage" bind:click-preview="onStepImagePreview" bind:error="onImageSelectError" />
+      </view>
+      <button class="secondary-button wide-button" disabled="{{uploading || saving || working}}" bindtap="onAddStep">添加步骤</button>
+    </view>
+
+    <view class="section-block">
+      <view class="section-title">期限与来源</view>
+      <picker range="{{labels.validity_type}}" value="{{validityTypeIndex}}" data-field="validity_type" bindchange="onOptionChange"><view class="picker-row">期限类型：{{labels.validity_type[validityTypeIndex]}}</view></picker>
+      <view class="date-row"><picker mode="date" value="{{startDate}}" data-field="start_at" bindchange="onDateChange"><view class="date-value">开始日期：{{startDate || '不限'}}</view></picker><button wx:if="{{startDate}}" class="date-clear" aria-label="清除开始日期" data-field="start_at" bindtap="onClearDate"><text>×</text></button></view>
+      <view class="date-row"><picker mode="date" value="{{endDate}}" disabled="{{activity.validity_type !== 'fixed'}}" data-field="end_at" bindchange="onDateChange"><view class="date-value {{activity.validity_type !== 'fixed' ? 'date-disabled' : ''}}">结束日期：{{activity.validity_type === 'fixed' ? (endDate || '请选择') : '不限'}}</view></picker><button wx:if="{{endDate}}" class="date-clear" aria-label="清除结束日期" data-field="end_at" bindtap="onClearDate"><text>×</text></button></view>
+    </view>
+
+    <view class="section-block">
+      <view class="section-title">内容状态</view>
+      <view class="status-line">{{activity.publication_status === 'draft' || !activity.publication_status ? '草稿' : activity.publication_status === 'published' ? '已发布' : activity.publication_status === 'paused' ? '已暂停' : '已结束'}} · {{activity.verification_status === 'verified' ? '已核验' : '待核验'}} · 修订 {{activity.revision || 0}}</view>
+      <button class="primary-button wide-button" loading="{{saving}}" disabled="{{uploading || working || saving}}" bindtap="onSave">保存活动</button>
+      <textarea class="form-textarea" auto-height="{{false}}" disable-default-padding="true" placeholder="本次核验说明（至少 10 字，记录实际检查内容）" maxlength="1000" value="{{evidence}}" bindinput="onEvidenceInput" />
+      <checkbox-group wx:if="{{activity.entry_type === 'mini_program'}}" bindchange="onEntryTestedChange"><label class="entry-tested"><checkbox value="tested" checked="{{entryTested}}" color="#176b52" />已在微信真机验证小程序跳转</label></checkbox-group>
+      <button class="secondary-button wide-button" loading="{{working}}" bindtap="onVerify">记录核验</button>
+      <textarea class="form-textarea compact-textarea" auto-height="{{false}}" disable-default-padding="true" placeholder="状态操作说明（至少 5 字）" maxlength="300" value="{{reason}}" bindinput="onReasonInput" />
+      <view class="action-grid">
+        <button wx:if="{{activity.publication_status === 'draft' || activity.publication_status === 'paused'}}" class="secondary-button" data-status="published" loading="{{working}}" bindtap="onTransition">{{activity.publication_status === 'paused' ? '恢复发布' : '发布活动'}}</button>
+        <button wx:if="{{activity.publication_status === 'published'}}" class="secondary-button" data-status="paused" loading="{{working}}" bindtap="onTransition">暂停活动</button>
+        <button wx:if="{{activity.publication_status === 'published' || activity.publication_status === 'paused'}}" class="danger-button" data-status="ended" loading="{{working}}" bindtap="onTransition">结束活动</button>
+      </view>
+      <button class="plain-button wide-button" bindtap="onGoBack">返回活动列表</button>
+    </view>
+  </block>
+  <canvas type="2d" id="step-image-canvas" class="image-conversion-canvas" />
+</view>

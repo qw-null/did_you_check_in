@@ -1,0 +1,28 @@
+<view class="page">
+  <view wx:if="{{!authorized && loading}}" class="card">正在核验管理员身份…</view>
+  <view wx:if="{{!authorized && !loading && error}}" class="card error">{{error}}</view>
+  <block wx:elif="{{authorized}}">
+  <view class="admin-toolbar">
+    <view class="toolbar-copy"><view class="section-title">活动</view><view class="toolbar-caption">维护目录、核验状态与发布状态</view></view>
+    <button class="primary-button add-button" bindtap="onAdd"><text class="add-mark">+</text>新增活动</button>
+  </view>
+  <scroll-view scroll-x class="status-scroll"><view class="status-row">
+    <view class="status-filter {{status === 'all' ? 'active' : ''}}" data-status="all" bindtap="onChooseStatus">全部</view>
+    <view class="status-filter {{status === 'draft' ? 'active' : ''}}" data-status="draft" bindtap="onChooseStatus">草稿</view>
+    <view class="status-filter {{status === 'published' ? 'active' : ''}}" data-status="published" bindtap="onChooseStatus">已发布</view>
+    <view class="status-filter {{status === 'paused' ? 'active' : ''}}" data-status="paused" bindtap="onChooseStatus">已暂停</view>
+    <view class="status-filter {{status === 'ended' ? 'active' : ''}}" data-status="ended" bindtap="onChooseStatus">已结束</view>
+    <button class="review-filter {{reviewOnly ? 'active' : ''}}" bindtap="onToggleReview">仅看待复核</button>
+  </view></scroll-view>
+  <view wx:if="{{error}}" class="card error">{{error}}<button class="text-button" bindtap="onRetry">重试</button></view>
+  <view wx:for="{{items}}" wx:key="_id" class="activity-row card">
+    <view class="activity-meta"><text>{{item.platform_name}}</text><text>{{item.publication_status === 'draft' ? '草稿' : (item.publication_status === 'published' ? '已发布' : (item.publication_status === 'paused' ? '已暂停' : '已结束'))}}</text></view>
+    <view class="row-title">{{item.title}}</view>
+    <view class="muted">{{item.reward_summary || '奖励摘要待填写'}}</view>
+    <view class="activity-meta muted"><text>{{item.verification_status === 'verified' ? '已核验' : '待核验'}}</text><text>版本 {{item.revision}}</text></view>
+    <button class="edit-button" data-id="{{item._id}}" bindtap="onEdit">编辑 / 核验 / 状态</button>
+  </view>
+  <view wx:if="{{loading}}" class="muted footer">正在加载…</view>
+  <view wx:if="{{!loading && !items.length && !error}}" class="card">此状态下还没有活动。</view>
+  </block>
+</view>

@@ -1,0 +1,10 @@
+.history-title { font-size:22px; font-weight:600; }
+.history-note { margin:16rpx 0 32rpx; color:#626268; font-size:12px; }
+.record-card { margin-bottom:20rpx; padding:28rpx; }
+.record-title { margin:12rpx 0; font-size:17px; font-weight:600; overflow-wrap:anywhere; }
+.record-meta { color:#626268; font-size:12px; }
+.record-date { margin:12rpx 0; color:#176b52; font-size:13px; }
+.empty { margin-top:24rpx; color:#626268; text-align:center; font-size:13px; }
+button.load-more { width:100%; padding:20rpx; border-radius:24rpx; color:#0062cc; background:#edf3fc; }
+.error { color:#a43f35; margin-bottom:20rpx; font-size:13px; }
+.error button { margin-top:12rpx; color:#0062cc; background:#edf3fc; }

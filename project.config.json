@@ -1,38 +1,38 @@
 {
-    "appid": "wxb7e6889ef5fe7e88",
-    "projectname": "did-you-check-in",
-    "compileType": "miniprogram",
-    "miniprogramRoot": "miniprogram/",
-    "cloudfunctionRoot": "cloudfunctions/",
-    "setting": {
-        "es6": true,
-        "enhance": true,
-        "postcss": true,
-        "minified": true,
-        "urlCheck": true,
-        "compileWorklet": false,
-        "uglifyFileName": false,
-        "uploadWithSourceMap": true,
-        "packNpmManually": false,
-        "packNpmRelationList": [],
-        "minifyWXSS": true,
-        "minifyWXML": true,
-        "localPlugins": false,
-        "disableUseStrict": false,
-        "useCompilerPlugins": false,
-        "condition": false,
-        "swc": false,
-        "disableSWC": true,
-        "babelSetting": {
-            "ignore": [],
-            "disablePlugins": [],
-            "outputPath": ""
-        }
-    },
-    "simulatorPluginLibVersion": {},
-    "packOptions": {
-        "ignore": [],
-        "include": []
-    },
-    "editorSetting": {}
+  "appid": "wxb7e6889ef5fe7e88",
+  "projectname": "did-you-check-in",
+  "compileType": "miniprogram",
+  "miniprogramRoot": "miniprogram/",
+  "cloudfunctionRoot": "cloudfunctions/",
+  "setting": {
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "minified": true,
+    "urlCheck": true,
+    "compileWorklet": false,
+    "uglifyFileName": false,
+    "uploadWithSourceMap": true,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true,
+    "minifyWXML": true,
+    "localPlugins": false,
+    "disableUseStrict": false,
+    "useCompilerPlugins": false,
+    "condition": false,
+    "swc": false,
+    "disableSWC": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    }
+  },
+  "simulatorPluginLibVersion": {},
+  "packOptions": {
+    "ignore": [],
+    "include": []
+  },
+  "editorSetting": {}
 }

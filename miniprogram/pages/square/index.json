@@ -1,3 +1,8 @@
 {
-  "navigationBarTitleText": "打卡了吗"
+  "navigationBarTitleText": "打卡了吗",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 160,
+  "usingComponents": {
+    "empty-state": "/components/empty-state/index"
+  }
 }

@@ -1,0 +1,4 @@
+{
+  "read": false,
+  "write": "auth != null && resource.openid == auth.openid && /^activity-step-staging\\//.test(resource.path)"
+}

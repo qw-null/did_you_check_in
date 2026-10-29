@@ -2,7 +2,10 @@
   <view wx:if="{{verifying}}" class="card">正在核验管理员身份…</view>
   <block wx:elif="{{authorized}}">
     <page-header title="运营工作台" description="已通过本次服务端身份核验。" />
-    <empty-state title="内容管理模块准备中" description="活动录入、核验发布、投稿审核和问题处理将分阶段接入。这里不展示模拟统计或未授权数据。" />
+    <view wx:if="{{dashboardError}}" class="card">{{dashboardError}}</view>
+    <view class="section-title">内容管理</view>
+    <view class="admin-link card" bindtap="onOpenPlatforms"><view><view class="link-title">平台管理</view><view class="muted">{{dashboard.platforms || 0}} 个平台</view></view><text>›</text></view>
+    <view class="admin-link card" bindtap="onOpenActivities"><view><view class="link-title">活动管理</view><view class="muted">{{dashboard.activities || 0}} 个活动 · {{dashboard.review_due || 0}} 项待复核</view></view><text>›</text></view>
   </block>
   <view wx:else class="card">当前无法进入运营工作台。</view>
 </view>

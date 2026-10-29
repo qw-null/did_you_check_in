@@ -1,1 +1,2 @@
-/* 基础布局复用 app.wxss，管理数据只在当前核验通过后展示。 */
+.admin-link { display: flex; align-items: center; justify-content: space-between; margin-top: 18rpx; padding: 28rpx; }
+.link-title { font-size: 16px; font-weight: 600; }
